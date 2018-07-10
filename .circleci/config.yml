@@ -46,7 +46,7 @@ jobs:
           -f noninteractive tzdata; '
     - run:
         working_directory: ~/sharetribe/sharetribe
-        command: rm -f sharetribe/sharetribe/.rvmrc; echo ruby-2.3.4 > sharetribe/sharetribe/.ruby-version; rvm use ruby-2.3.4 --default
+        command: rm -f sharetribe/sharetribe/.rvmrc; echo ruby-2.3.4 > sharetribe/sharetribe/.ruby-version;
     - run:
         working_directory: ~/sharetribe/sharetribe
         command: nvm install 7.8.0 && nvm alias default 7.8.0
