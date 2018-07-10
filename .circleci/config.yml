@@ -43,7 +43,7 @@ jobs:
     - run:
         working_directory: ~/sharetribe/sharetribe
         command: 'echo ''Europe/Helsinki'' | sudo tee -a /etc/timezone; sudo dpkg-reconfigure
-          -f noninteractive tzdata; sudo /etc/init.d/mysql restart; '
+          -f noninteractive tzdata; '
     - run:
         working_directory: ~/sharetribe/sharetribe
         command: rm -f sharetribe/sharetribe/.rvmrc; echo ruby-2.3.4 > sharetribe/sharetribe/.ruby-version; rvm use ruby-2.3.4 --default
