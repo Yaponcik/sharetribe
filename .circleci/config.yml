@@ -28,8 +28,9 @@ jobs:
     # To see the list of pre-built images that CircleCI provides for most common languages see
     # https://circleci.com/docs/2.0/circleci-images/
     docker:
-    - image: circleci/ruby:2.3.4-node-browsers
+    - image: circleci/ruby:2.3.4-browsers
     - image: circleci/mysql:5.7.21
+    - image: circleci/node:7.8.0
     steps:
     # Machine Setup
     #   If you break your build into multiple jobs with workflows, you will probably want to do the parts of this that are relevant in each
@@ -44,9 +45,6 @@ jobs:
         working_directory: ~/sharetribe/sharetribe
         command: 'echo ''Europe/Helsinki'' | sudo tee -a /etc/timezone; sudo dpkg-reconfigure
           -f noninteractive tzdata; '
-    - run:
-        working_directory: ~/sharetribe/sharetribe
-        command: nvm install 7.8.0 && nvm alias default 7.8.0
     # Dependencies
     #   This would typically go in either a build or a build-and-test job when using workflows
     # Restore the dependency cache
