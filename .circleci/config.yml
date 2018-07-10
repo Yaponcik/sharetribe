@@ -29,7 +29,7 @@ jobs:
     # https://circleci.com/docs/2.0/circleci-images/
     docker:
     - image: circleci/ruby:2.3.4-node-browsers
-      # command: /sbin/init
+    - image: circleci/mysql:5.7.21
     steps:
     # Machine Setup
     #   If you break your build into multiple jobs with workflows, you will probably want to do the parts of this that are relevant in each
@@ -43,8 +43,7 @@ jobs:
     - run:
         working_directory: ~/sharetribe/sharetribe
         command: 'echo ''Europe/Helsinki'' | sudo tee -a /etc/timezone; sudo dpkg-reconfigure
-          -f noninteractive tzdata; sudo service mysql restart; sudo service postgresql
-          restart; '
+          -f noninteractive tzdata; sudo service mysql restart; '
     - run:
         working_directory: ~/sharetribe/sharetribe
         command: rm -f sharetribe/sharetribe/.rvmrc; echo ruby-2.3.4 > sharetribe/sharetribe/.ruby-version; rvm use ruby-2.3.4 --default
