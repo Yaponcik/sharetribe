@@ -46,9 +46,6 @@ jobs:
           -f noninteractive tzdata; '
     - run:
         working_directory: ~/sharetribe/sharetribe
-        command: rm -f sharetribe/sharetribe/.rvmrc; echo ruby-2.3.4 > sharetribe/sharetribe/.ruby-version;
-    - run:
-        working_directory: ~/sharetribe/sharetribe
         command: nvm install 7.8.0 && nvm alias default 7.8.0
     # Dependencies
     #   This would typically go in either a build or a build-and-test job when using workflows
