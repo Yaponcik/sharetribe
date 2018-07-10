@@ -116,13 +116,13 @@ jobs:
         name: bundle exec rspec --format progress --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml
         # We may not be using as efficient a splitting method as was used on the 1.0 platform.
         # For the most efficient split, see https://circleci.com/docs/2.0/parallelism-faster-jobs/ for setting this manually.
-        command: bundle exec rspec --format progress --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml $(circleci tests glob "clojure.lang.LazySeq@74bc5e12" | circleci tests split)
+        command: bundle exec rspec --format progress --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml $(circleci tests glob spec/**/*_spec.rb | circleci tests split)
     - run: mkdir -p $CIRCLE_TEST_REPORTS/cucumber
     - run:
         name: bundle exec cucumber -p ci --format junit --out $CIRCLE_TEST_REPORTS/cucumber/junit.xml
         # We may not be using as efficient a splitting method as was used on the 1.0 platform.
         # For the most efficient split, see https://circleci.com/docs/2.0/parallelism-faster-jobs/ for setting this manually.
-        command: bundle exec cucumber -p ci --format junit --out $CIRCLE_TEST_REPORTS/cucumber/junit.xml $(circleci tests glob "clojure.lang.LazySeq@b9c5d3d4" | circleci tests split)
+        command: bundle exec cucumber -p ci --format junit --out $CIRCLE_TEST_REPORTS/cucumber/junit.xml $(circleci tests glob features/**/*.feature | circleci tests split)
         environment:
           PHANTOMJS: true
     - run:
